@@ -10,6 +10,18 @@ const findMany = async (req, res) => {
   }
 }
 
+const createCity = async(req, res) => {
+  try {
+    const newCity = req.body;
+    const city_doc = await City.create(newCity);
+    res.status(200).json({results: [city_doc] });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: "Creation failed" });
+  }
+}
+
 module.exports = {
-  findMany
+  findMany,
+  createCity
 }

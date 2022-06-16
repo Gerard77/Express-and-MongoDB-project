@@ -1,5 +1,14 @@
+require('dotenv').config();
+
+const checkEnvVars = (name) => {
+    if(process.env[name]===undefined){
+        throw new Error(`Undefined environment variable ${name}`);
+    }
+    return process.env[name];
+}
+
 module.exports = {
-    PORT: 8888,
-    MONGO_URL: "mongodb://gerard:olakease@localhost:27017/test?authSource=admin"
+    PORT: checkEnvVars('PORT'),
+    MONGO_URL: checkEnvVars("MONGO_URL")
 }
 

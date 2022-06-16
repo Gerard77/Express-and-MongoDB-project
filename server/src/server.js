@@ -21,7 +21,7 @@ app.use('/city', cityRouter);
 const startServer = async () =>{
     await db.connect();
     app.listen(8082,()=>{
-        console.log("Forums API listening on: 8082");
+        console.log("Cities API listening on: 8082");
     });
 }
 
