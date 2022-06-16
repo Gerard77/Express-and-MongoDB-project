@@ -4,7 +4,11 @@ const cityControllers = require("./city.controllers");
 
 const router = Router();
 
-router.route("/").get(cityControllers.findMany)
-                .post(cityControllers.createCity);
+router.get("/", cityControllers.findMany)
+router.post("/", cityControllers.createCity);
+
+router.delete("/:id",cityControllers.deleteCity);
+router.post("/:id",cityControllers.updateCity);
+router.get("/:id",cityControllers.updateCity);
 
 module.exports = router;
