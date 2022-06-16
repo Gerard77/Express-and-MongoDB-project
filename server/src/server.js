@@ -18,6 +18,9 @@ app.get("/",async (req, res)=>{
 const cityRouter = require('./resources/city/city.router');
 app.use('/city', cityRouter);
 
+const buildingRouter = require('./resources/building/building.router');
+app.use('/building', buildingRouter);
+
 const startServer = async () =>{
     await db.connect();
     app.listen(8082,()=>{

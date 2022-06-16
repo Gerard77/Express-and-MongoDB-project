@@ -13,4 +13,4 @@ const citySchema = new Schema({
 
 const CityNative = mongoose.model('city',citySchema);
 
-module.exports = CityNative;
+module.exports = {model_city: CityNative, schema_city: citySchema};

@@ -1,4 +1,5 @@
-const City = require('./city.model');
+const CityStructures = require('./city.model');
+const City = CityStructures.model_city;
 
 const findMany = async (req, res) => {
   try {
@@ -52,13 +53,26 @@ const updateCity = async (req, res) => {
 const findOne = async(req, res) => {
   try {
     const {id} = req.params;
-    const city_doc = City.findOne({"id":id})
+    const city_doc = await City.findOne({"id":id})
     if(!city_doc){
       return res.status(404).json({ error: "City not found" });
     }
-  } catch (error) {
+    res.status(200).json({ results: [city_doc] });
+  } catch (e) {
     console.log(e);
     res.status(500).json({ error: "Internal error" });
+  }
+}
+
+const findOneForBuilding = async(id) =>{
+  try {
+    const city_doc = await City.findOne({_id:id})
+    if(!city_doc){
+      return { error: "City not found" };
+    }
+    return city_doc;
+  } catch (e) {
+    console.log(e);
   }
 }
 
@@ -67,5 +81,6 @@ module.exports = {
   createCity,
   deleteCity,
   updateCity,
-  findOne
+  findOne,
+  findOneForBuilding
 }
