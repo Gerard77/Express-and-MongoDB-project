@@ -4,7 +4,6 @@ const CityStructures = require('../city/city.model');
 const citySchema = CityStructures.schema_city;
 
 const buildingSchema = new Schema({
-    city: citySchema,
     name: {
         type: String,
         required: true,
@@ -14,9 +13,9 @@ const buildingSchema = new Schema({
     text: {
         type: String,
         required: true,
-        unique: true,
         maxlength: 250
-    }
+    },
+    city: citySchema
 },
 { timestamps: true });
 

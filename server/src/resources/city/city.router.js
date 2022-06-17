@@ -9,6 +9,6 @@ router.post("/", cityControllers.createCity);
 
 router.delete("/:id",cityControllers.deleteCity);
 router.post("/:id",cityControllers.updateCity);
-router.get("/:id",cityControllers.updateCity);
+router.get("/:id",cityControllers.findOne);
 
 module.exports = router;
