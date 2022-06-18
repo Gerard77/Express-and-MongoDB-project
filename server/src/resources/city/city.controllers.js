@@ -2,7 +2,8 @@ const CityStructures = require('./city.model');
 const City = CityStructures.model_city;
 const Building = require('../building/building.controllers');
 
-const findMany = async (req, res) => {
+//find all cities
+const findAll = async (req, res) => {
   try {
     const cities_docs = await City.find().lean().exec();
     res.status(200).json({ results: cities_docs });
@@ -12,6 +13,7 @@ const findMany = async (req, res) => {
   }
 }
 
+//createCity
 const createCity = async(req, res) => {
   try {
     const newCity = req.body;
@@ -64,7 +66,7 @@ const updateCity = async (req, res) => {
 const findOne = async(req, res) => {
   try {
     const {id} = req.params;
-    const city_doc = await City.findOne({"id":id})
+    const city_doc = await City.findOne({_id:id})
     if(!city_doc){
       return res.status(404).json({ error: "City not found" });
     }
@@ -75,6 +77,7 @@ const findOne = async(req, res) => {
   }
 }
 
+//Used in building.controllers
 const findOne_ForBuilding = async(id) =>{
   try {
     const city_doc = await City.findOne({_id:id})
@@ -88,7 +91,7 @@ const findOne_ForBuilding = async(id) =>{
 }
 
 module.exports = {
-  findMany,
+  findAll,
   createCity,
   deleteCity,
   updateCity,

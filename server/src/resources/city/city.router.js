@@ -4,7 +4,7 @@ const cityControllers = require("./city.controllers");
 
 const router = Router();
 
-router.get("/", cityControllers.findMany)
+router.get("/", cityControllers.findAll)
 router.post("/", cityControllers.createCity);
 
 router.delete("/:id",cityControllers.deleteCity);

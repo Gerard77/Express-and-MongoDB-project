@@ -12,7 +12,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 app.get("/",async (req, res)=>{
-    res.status(200).send({ send: "heilow!"});
+    res.status(200).send({ send: "Hello! Welcome to the cities and buildings API!"});
 });
 
 const cityRouter = require('./resources/city/city.router');
@@ -23,8 +23,8 @@ app.use('/building', buildingRouter);
 
 const startServer = async () =>{
     await db.connect();
-    app.listen(8082,()=>{
-        console.log("Cities API listening on: 8082");
+    app.listen(PORT,()=>{
+        console.log(`Cities API listening on: ${PORT}`);
     });
 }
 
